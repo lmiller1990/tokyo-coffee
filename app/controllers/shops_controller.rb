@@ -1,5 +1,11 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit]
+
   def show
+    @shop = Shop.find(params[:id])
+  end
+
+  def edit
     @shop = Shop.find(params[:id])
   end
 

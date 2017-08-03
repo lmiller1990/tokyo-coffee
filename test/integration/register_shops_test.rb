@@ -8,14 +8,8 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
                                   password: @password)
   end
 
-  test "successful login of confirmed user" do
-    sign_in(user: @confirmed_user, password: @password)
-    assert_redirected_to root_url
-  end
-
-
-
   test 'invalid shop registration' do
+    sign_in(user: @confirmed_user, password: @password)
     get new_shop_path
     assert_no_difference 'Shop.count' do
       post shops_path, params: {
@@ -28,11 +22,8 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
     assert_select ".error.message", count: 1
   end
 
-  test 'require user login to register shop' do
-
-  end
-
-  test 'valid shop registration' do
+  test 'valid shop registration with user logged in' do
+    sign_in(user: @confirmed_user, password: @password)
     get new_shop_path
     assert_difference 'Shop.count', 1 do
       post shops_path, params: {
@@ -42,7 +33,6 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
       }
     end
     follow_redirect!
-    puts body
     assert_select ".shop.name", 'Shoppy'
   end
 end
