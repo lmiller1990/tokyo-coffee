@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+shop_one:
+  name: delicious_coffee_shop
 
-two:
-  name: MyString
+shop_two:
+  name: best_coffee_tokyo
