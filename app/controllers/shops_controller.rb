@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit]
+  before_action :authenticate_user!, only: [:create, :edit, :new]
 
   def show
     @shop = Shop.find(params[:id])
