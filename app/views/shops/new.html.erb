@@ -1,9 +1,4 @@
+<% provide(:button_text, 'Register Cafe') %>
 <h4>New Shop</h4>
 
-<%= form_for(@shop) do |f| %>
-  <%= render 'shared/error_messages' %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.submit 'Register Cafe', class: '' %>
-<% end %>
+<%= render 'form' %>
