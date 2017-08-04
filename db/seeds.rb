@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: 'Lachlan', email: 'lachlan@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
+lachlan = User.create!(name: 'Lachlan', email: 'lachlan@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
 
 puts 'Creating users...'
 User.create!(name: 'User', email: 'user@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
@@ -44,3 +44,6 @@ minami_azabu = District.create(japanese_name: '南麻布', english_name: 'Minami
 
 puts 'Creating shops...'
 azabu_coffee = Shop.create(japanese_name: '麻布コーヒー', english_name: 'Azabu Coffee', district: roppongi)
+
+puts 'Creating reviews'
+azabu_coffee_review = Review.create(comment: 'Great!', shop: azabu_coffee, user: lachlan)
