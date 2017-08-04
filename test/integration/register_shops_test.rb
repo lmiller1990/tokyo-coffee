@@ -3,9 +3,11 @@ require 'test_helper'
 class RegisterShopsTest < ActionDispatch::IntegrationTest
 
   def setup
+    @district = districts(:district_one)
     @password = "password"
-    @confirmed_user = User.create(email: "#{rand(4000)}@example.com", 
-                                  password: @password)
+    @confirmed_user = User.create(email: "#{rand(4000)}@example.com",
+                                  password: @password,
+                                  admin: true)
   end
 
   test 'invalid shop registration' do
@@ -19,7 +21,7 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
       }
     end
     assert_template 'shops/new'
-    assert_select ".error.message", count: 1
+    assert_select ".error.message", count: 2
   end
 
   test 'valid shop registration with user logged in' do
@@ -28,7 +30,8 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
     assert_difference 'Shop.count', 1 do
       post shops_path, params: {
         shop: {
-          name: 'Shoppy'
+          japanese_name: 'Shoppy',
+          district_id: @district.id
         }
       }
     end

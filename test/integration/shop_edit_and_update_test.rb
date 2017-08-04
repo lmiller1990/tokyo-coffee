@@ -2,7 +2,8 @@ require 'test_helper'
 
 class ShopEditAndUpdateTest < ActionDispatch::IntegrationTest
   def setup
-    @shop = Shop.create(name: 'My shop')
+    @shop = shops(:shop_one)
+    @district = districts(:district_one)
     @password = "password"
     @confirmed_user = User.create(email: "#{rand(4000)}@example.com", 
                                   password: @password)
@@ -14,7 +15,8 @@ class ShopEditAndUpdateTest < ActionDispatch::IntegrationTest
     assert_template 'shops/edit'
     patch shop_path(@shop), params: {
       shop: {
-        name: ''
+        japanese_name: '',
+        district_id: 1
       }
     }
     assert_template 'shops/edit'
@@ -26,12 +28,13 @@ class ShopEditAndUpdateTest < ActionDispatch::IntegrationTest
     assert_template 'shops/edit'
     patch shop_path(@shop), params: {
       shop: {
-        name: 'New updated name'
+        district_id: @district.id,
+        japanese_name: 'New updated name'
       }
     }
     assert_not flash.empty?
     assert_redirected_to @shop
     @shop.reload
-    assert_equal @shop.name, 'New updated name'
+    assert_equal @shop.japanese_name, 'New updated name'
   end
 end

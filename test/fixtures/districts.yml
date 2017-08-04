@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+district_one:
   japanese_name: MyString
   english_name: MyString
-  ward: one
+  ward: ward_one
 
-two:
+district_two:
   japanese_name: MyString
   english_name: MyString
-  ward: two
+  ward: ward_one

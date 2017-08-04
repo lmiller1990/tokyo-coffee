@@ -3,14 +3,15 @@ require 'test_helper'
 class DeleteShopTest < ActionDispatch::IntegrationTest
   def setup
     @password = "password"
-    @admin_user = User.create(email: "#{rand(4000)}@example.com", 
+    @admin_user = User.create(email: "#{rand(4000)}@example.com",
                                   password: @password,
                                   admin: true)
 
-    @non_admin_user = User.create(email: "#{rand(4000)}@example.com", 
+    @non_admin_user = User.create(email: "#{rand(4000)}@example.com",
                                   password: @password,
                                   admin: false)
-    @shop = Shop.create(name: 'To delete')
+
+    @shop = shops(:shop_one)
   end
 
   test "only an admin can delete a shop" do

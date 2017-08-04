@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ShopTest < ActiveSupport::TestCase
   def setup
-    @shop = Shop.new(name: 'Test shop')
+    @shop = Shop.new(japanese_name: 'Test shop', district: District.new)
   end
 
   test 'should be valid' do
@@ -10,12 +10,12 @@ class ShopTest < ActiveSupport::TestCase
   end
 
   test 'name should be present' do
-    @shop.name = '    '
+    @shop.japanese_name = '    '
     assert_not @shop.valid?
   end
 
   test 'name should not be too long' do
-    @shop.name = "a" * 51
+    @shop.japanese_name = "a" * 51
     assert_not @shop.valid?
   end
 

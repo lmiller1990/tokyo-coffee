@@ -3,7 +3,7 @@
 <ul>
   <% @shops.each do |shop| %>
     <li>
-      <%= link_to shop.name, shop %> <% if current_user.present? && current_user.admin? %><%= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+      <%= link_to shop.japanese_name, shop %> <% if current_user.present? && current_user.admin? %><%= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
     </li>
   <% end %>
 </ul>

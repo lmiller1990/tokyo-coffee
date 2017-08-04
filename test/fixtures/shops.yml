@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 shop_one:
-  name: delicious_coffee_shop
+  japanese_name: delicious_coffee_shop
+  district: district_one
 
 shop_two:
-  name: best_coffee_tokyo
+  japanese_name: best_coffee_tokyo
+  district: district_one

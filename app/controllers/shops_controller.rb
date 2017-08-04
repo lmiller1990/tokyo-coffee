@@ -16,8 +16,9 @@ class ShopsController < ApplicationController
 
   def update
     @shop = Shop.find(params[:id])
+
     if @shop.update_attributes(shop_params)
-      flash[:success] = "#{@shop.name} updated." 
+      flash[:success] = "#{@shop.japanese_name} updated."
       redirect_to @shop
     else
       render 'edit'
@@ -26,12 +27,13 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    @districts = District.all
   end
 
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      flash[:success] = "Thank you for registering #{@shop.name}."
+      flash[:success] = "Thank you for registering #{@shop.japanese_name}."
       redirect_to @shop
     else
       render 'new'
@@ -40,14 +42,14 @@ class ShopsController < ApplicationController
 
   def destroy
     shop = Shop.find(params[:id]).destroy
-    flash[:success] = "#{shop.name} deleted."
+    flash[:success] = "#{shop.japanese_name} deleted."
     redirect_to shops_url
   end
 
   private
 
   def shop_params
-    params.require(:shop).permit(:name)
+    params.require(:shop).permit(:japanese_name, :district_id)
   end
 
   def admin_user
