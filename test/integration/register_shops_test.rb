@@ -16,7 +16,7 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Shop.count' do
       post shops_path, params: {
         shop: {
-          name: ''
+          japanese_name: ''
         }
       }
     end
