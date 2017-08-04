@@ -36,5 +36,11 @@ adachi = Ward.create(japanese_name: '足立区',  english_name: 'Adachi')
 katsushika = Ward.create(japanese_name: '葛飾区',  english_name: 'Katsushika')
 edogawa = Ward.create(japanese_name: '江戸川区',  english_name: 'Edogawa')
 
-District.create(japanese_name: '永田町', english_name: 'Nagatacho', ward: chiyoda )
-District.create(japanese_name: '霞ヶ関', english_name: 'Kasumigaseki', ward: chiyoda )
+puts 'Creating districts...'
+nagatacho = District.create(japanese_name: '永田町', english_name: 'Nagatacho', ward: chiyoda )
+kasumigaseki = District.create(japanese_name: '霞ヶ関', english_name: 'Kasumigaseki', ward: chiyoda )
+roppongi = District.create(japanese_name: '六本木', english_name: 'Roppongi', ward: shibuya )
+minami_azabu = District.create(japanese_name: '南麻布', english_name: 'Minami Azabu', ward: minato )
+
+puts 'Creating shops...'
+azabu_coffee = Shop.create(japanese_name: '麻布コーヒー', english_name: 'Azabu Coffee', district: roppongi)

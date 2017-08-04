@@ -1,4 +1,4 @@
 class Shop < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 50 }
- 
+  validates :japanese_name, presence: true, length: { maximum: 50 }
+  belongs_to :district 
 end
