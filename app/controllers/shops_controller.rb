@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :new]
+  before_action :authenticate_user!, only: [:create, :edit, :new, :destroy]
+  before_action :admin_user, only: [:destroy]
 
   def index
     @shops = Shop.all
@@ -37,9 +38,19 @@ class ShopsController < ApplicationController
     end
   end
 
+  def destroy
+    shop = Shop.find(params[:id]).destroy
+    flash[:success] = "#{shop.name} deleted."
+    redirect_to shops_url
+  end
+
   private
 
   def shop_params
     params.require(:shop).permit(:name)
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end
