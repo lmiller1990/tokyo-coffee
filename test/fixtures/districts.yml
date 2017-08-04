@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  japanese_name: MyString
+  english_name: MyString
+  ward: one
+
+two:
+  japanese_name: MyString
+  english_name: MyString
+  ward: two

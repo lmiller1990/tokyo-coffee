@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803153658) do
+ActiveRecord::Schema.define(version: 20170804120427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "districts", force: :cascade do |t|
+    t.string "japanese_name"
+    t.string "english_name"
+    t.bigint "ward_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ward_id"], name: "index_districts_on_ward_id"
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
@@ -40,4 +49,12 @@ ActiveRecord::Schema.define(version: 20170803153658) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wards", force: :cascade do |t|
+    t.string "japanese_name"
+    t.string "english_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "districts", "wards"
 end
