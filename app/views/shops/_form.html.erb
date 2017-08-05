@@ -3,16 +3,8 @@
   <%= f.label :japanese_name %>
   <%= f.text_field :japanese_name %>
 
-  <%= f.label :district_name %>
-  <select name="district_id">
-    <%= District.all.each do |district| %>
-      <option value="<%= district.id %>"><%= district.japanese_name %></option>
-    <% end %>
-  </select>
 
-  <%#= select_tag :district_id, options_for_select(@district_options) %>
-
-  <%#= select(:shop, :district_id, @district_options) %>
+	<%= select('shop', 'district_id', District.all.collect { |d| [ d.japanese_name, d.id ] }) %>
 
   <%= f.submit yield(:button_text), class: '' %>
 
