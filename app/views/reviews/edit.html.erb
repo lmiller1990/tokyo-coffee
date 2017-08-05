@@ -1,0 +1,9 @@
+<% provide(:button_text, 'Update Review') %>
+<h4>Edit Review</h4>
+
+<%= render 'form' %>
+
+<%= @review.id %> - <%= @review.comment %>
+
+By <%= @review.user.email %>
+

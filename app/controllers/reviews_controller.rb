@@ -22,6 +22,22 @@ class ReviewsController < ApplicationController
 		@review = @shop.reviews.build
 	end
 
+	def edit
+		@shop = Shop.find(params[:shop_id])
+		@review = Review.find(params[:id])
+	end
+
+	def update
+		@review = Review.find(params[:id])
+
+		if @review.update_attributes(review_params)
+			flash[:success] = 'Review updated.'
+			redirect_to shop_review_path(@review)
+		else
+			render 'edit'
+		end
+	end
+
 	def show
 		@review = Review.find(params[:id])	
 	end

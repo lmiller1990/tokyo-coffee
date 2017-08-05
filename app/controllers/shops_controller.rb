@@ -32,8 +32,8 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-		puts shop_params
-		@district_options = District.all.map { |d| [d.japanese_name, d.id] }
+		# @district_options = District.all.map { |d| [d.japanese_name, d.id] }
+
     if @shop.save
       flash[:success] = "Thank you for registering #{@shop.japanese_name}."
       redirect_to @shop

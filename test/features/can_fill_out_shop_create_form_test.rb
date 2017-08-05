@@ -12,7 +12,6 @@ class CanFillOutShopCreateFormTest < Capybara::Rails::TestCase
 	test "user can fill out and submit form to create shop" do
 		assert_difference 'Shop.count', 1 do
 			visit new_user_session_path
-			puts body
 			fill_in 'user[email]', with: @confirmed_user.email
 			fill_in 'user[password]', with: @confirmed_user.password
 			click_on 'Log in'
