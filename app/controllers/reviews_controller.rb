@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 	before_action :authenticate_user!, except: [:show, :index]
+	# before_action :is_creator, only: [:update, :destroy]
 
 	def index
 	end
@@ -25,10 +26,12 @@ class ReviewsController < ApplicationController
 	def edit
 		@shop = Shop.find(params[:shop_id])
 		@review = Review.find(params[:id])
+		authorize @review
 	end
 
 	def update
 		@review = Review.find(params[:id])
+		authorize @review
 
 		if @review.update_attributes(review_params)
 			flash[:success] = 'Review updated.'
