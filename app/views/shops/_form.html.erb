@@ -1,11 +1,32 @@
-<%= form_for @shop do |f| %>
+<%= form_for(@shop, html: { class: 'ui form' }) do |f| %>
   <%= render 'shared/error_messages' %>
-  <%= f.label :japanese_name %>
-  <%= f.text_field :japanese_name %>
+	<div class="field">
+		<%= f.label :japanese_name, 'カフェーの名前'	%>
+		<%= f.text_field :japanese_name %>
+	</div>
 
 
-	<%= select('shop', 'district_id', District.all.collect { |d| [ d.japanese_name, d.id ] }) %>
-
-  <%= f.submit yield(:button_text), class: '' %>
+	<div class="field">
+		<label for="shop_district_id">場所</label>
+		<%= select('shop', 
+							 'district_id', 
+							 District.all.collect { |d| [ d.japanese_name, d.id ] },
+							 { },
+							 { class: 'ui dropdown' }) %>
+	</div>
+  <%= f.submit yield(:button_text), class: 'ui basic green fluid button' %>
 
 <% end %>
+
+<script>
+$(document).ready(function() {
+	console.log('init dropdown')
+	$('.ui.dropdown').dropdown()
+})
+</script>
+
+<style>
+.ui.form {
+	text-align: left;
+}
+</style>

@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= yield(:title) %> | 東京コーヒー・カフェー</title>
+	<head>
+		<title><%= yield(:title) %> | 東京コーヒー・カフェー</title>
 		<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
 
 		<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
-<!--		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>-->
+		<%= csrf_meta_tags %>
 
-    <%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<body>
+		<div class="pusher">
+			<div class="ui vertical center aligned segment">
+				<%= render 'layouts/header' %>
 
-  <body>
-    <%= render 'layouts/header' %>
+				<% flash.each do |message_type, message| %>
+					<div class="<%= "#{message_type}" %> message">
+						<%= message %>
+					</div>
+				<% end %>
 
-    <% flash.each do |message_type, message| %>
-      <div class="<%= "#{message_type}" %> message">
-        <%= message %>
-      </div>
-    <% end %>
-
-    <%= yield %>
-    <%#= debug(params) if Rails.env.development? %>
-  </body>
+				<%= yield %>
+			</div>
+		</div>
+		<%#= debug(params) if Rails.env.development? %>
+	</body>
 </html>
