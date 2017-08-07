@@ -2,6 +2,13 @@
 <html>
   <head>
     <title><%= yield(:title) %> | 東京コーヒー・カフェー</title>
+		<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
+
+		<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<!--		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>-->
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,9 +24,7 @@
       </div>
     <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+    <%#= debug(params) if Rails.env.development? %>
   </body>
 </html>

@@ -1,12 +1,68 @@
-<header>
-  <div class="container">
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Profile", new_user_registration_path %></li>
-        <li><%= link_to "Menu", "#" %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<div class="ui text menu">
+	<div class="item">
+		<!-- placeholder -->
+	</div>
+	<div class="brand header item">
+		<div class="header text">
+			Tokyo Coffee
+		</div>
+	</div>
+	<div class="right menu">
+		<%= link_to new_user_session_path, class: 'item' do %>
+			<i class="inverted bordered user icon"></i>
+		<% end %>
+		<%= link_to '#', class: 'item' do %>
+			<i class="inverted bordered sidebar icon"></i>
+		<% end %>
+	</div>
+</div>
+
+<style>
+.header.text {
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	font-size: 1.6em;
+	padding: 5px;
+}
+</style>
+
+<!--<div class="ui page grid">
+	<div class="computer tablet only row">
+		<div class="ui inverted fluid menu navbar">
+			<a class="brand item" href="">Project Name</a>
+			<div class="right menu">
+				<a class="active item" href="">
+					Item
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="mobile only narrow row">
+		<div class="ui inverted navbar fluid menu">
+			<a class="brand item" href="">Project Name</a>
+			<div class="right menu open">
+				<div class="menu item">
+					<i class="reorder icon"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<!--<header>
+	<div class="container">
+	<nav>
+	<ul>
+	<li><%= link_to "Home", root_path %></li>
+	<li><%= link_to "Profile", new_user_registration_path %></li>
+	<li><%= link_to "Menu", "#" %></li>
+	<% if current_user %>
+		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+	<% else %>
+		<li><%= link_to "Sign in", new_user_session_path %></li>
+	<% end %>
+
+	</ul>
+	</nav>
+	</div>
+	</header>-->

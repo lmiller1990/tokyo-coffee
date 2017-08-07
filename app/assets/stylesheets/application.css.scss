@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@import "semantic-ui";
+
+.splash-image {
+	background-size: cover;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: -5;
+}
