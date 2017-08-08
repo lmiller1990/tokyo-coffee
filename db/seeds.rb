@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-lachlan = User.create!(name: 'Lachlan', email: 'lachlan@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
 
 puts 'Creating users...'
-User.create!(name: 'User', email: 'user@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
+
+lachlan = User.create!(name: 'Lachlan', email: 'lachlan@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
+lily = User.create!(name: 'Lily', email: 'lily@tokyo-coffee.com', password: '123123123', password_confirmation: '123123123', admin: true)
 
 puts 'Creating wards...'
 chiyoda = Ward.create(japanese_name: '千代田',  english_name: 'Chiyoda')
@@ -40,10 +41,17 @@ puts 'Creating districts...'
 nagatacho = District.create(japanese_name: '永田町', english_name: 'Nagatacho', ward: chiyoda )
 kasumigaseki = District.create(japanese_name: '霞ヶ関', english_name: 'Kasumigaseki', ward: chiyoda )
 roppongi = District.create(japanese_name: '六本木', english_name: 'Roppongi', ward: shibuya )
-minami_azabu = District.create(japanese_name: '南麻布', english_name: 'Minami Azabu', ward: minato )
+azabu_juban = District.create(japanese_name: '麻布十番', english_name: 'Azabu Juban', ward: minato )
 
 puts 'Creating shops...'
 azabu_coffee = Shop.create(japanese_name: '麻布コーヒー', english_name: 'Azabu Coffee', district: roppongi)
+honolulu_coffee = Shop.create(japanese_name: 'ホノルルコーヒー', english_name: 'Honolulu Coffee', district: azabu_juban)
+starbucks_azabu_juban = Shop.create(japanese_name: 'スタバックス麻布十番店舗;', english_name: 'Starbucks Azabu Juban', district: azabu_juban)
 
 puts 'Creating reviews'
 azabu_coffee_review = Review.create(comment: 'Great!', shop: azabu_coffee, user: lachlan)
+
+puts 'Creating photos'
+Photo.create(link: 'shop-5.jpg', user: lachlan, shop: azabu_coffee)
+Photo.create(link: 'shop-2.jpg', user: lily, shop: honolulu_coffee)
+Photo.create(link: 'shop-3.jpg', user: lachlan, shop: starbucks_azabu_juban)

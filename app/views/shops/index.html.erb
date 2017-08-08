@@ -4,12 +4,12 @@
 	<div class="four wide column">
 		Stuff
 	</div>
-	<div class="twelve wide column">
+	<div class="nine wide column">
 		<div class="ui items">
 			<% @shops.each do |shop| %>
 				<div class="item">
 					<div class="image">
-						Image	
+						<%= image_tag shop.photos.first.link %>
 					</div>
 					<div class="content">
 						<%= link_to shop.japanese_name, shop, class: "header" %>
@@ -20,9 +20,16 @@
 							<p>Some interesting info goes here.</p>
 						</div>
 						<div class="extra">
-							<i class="empty heart icon"></i>
-							<i class="star icon"></i>
-							<i class="smile icon"></i>
+							<i class="wifi icon"></i>
+							<i class="pause circle outline icon"></i>
+							<i class="volume down icon"></i>
+							<i class="food icon"></i>
+							<i class="coffee icon"></i>
+						</div>
+						<div class="right extra">
+							<i class="instagram icon"></i>
+							<i class="facebook icon"></i>
+							<i class="snapchat icon"></i>
 						</div>
 					</div>
 					<%# if current_user.present? && current_user.admin? %>
@@ -35,7 +42,14 @@
 </div>
 
 <style>
-#shop-index-container {
-	text-align: left;
+.right.extra {
+	display: flex !important;
+	justify-content: flex-end; 
+}
+
+@media (min-width: 768px) {
+	#shop-index-container {
+		text-align: left;
+	}
 }
 </style>
