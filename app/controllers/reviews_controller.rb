@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 	# before_action :is_creator, only: [:update, :destroy]
 
 	def index
+		@shop = Shop.find(params[:shop_id])
+		@reviews = @shop.reviews
 	end
 	
 	def create

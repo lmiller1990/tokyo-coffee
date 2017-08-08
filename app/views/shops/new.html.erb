@@ -1,7 +1,9 @@
 <% provide(:button_text, '登録') %>
-<h4>新しいカフェー登録</h4>
 
-<div class="ui equal width stackable grid container">
+<h4 class="ui horizontal divider header container">
+	新しいカフェー登録
+</h4>
+<div class="ui equal width stackable grid container" id="new-shop-container">
 	<div class="ui column">
 		<%= render 'form' %>
 	</div>
@@ -37,3 +39,9 @@
 		</div>
 	</div>
 </div>
+
+<style>
+#new-shop-container {
+	margin-top: 3em;
+}
+</style>
