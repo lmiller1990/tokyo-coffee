@@ -1,9 +1,41 @@
 <h4>All Cafes</h4>
 
-<ul>
-  <% @shops.each do |shop| %>
-    <li>
-      <%= link_to shop.japanese_name, shop %> <% if current_user.present? && current_user.admin? %><%= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-    </li>
-  <% end %>
-</ul>
+<div class="ui equal width stackable grid container" id="shop-index-container">
+	<div class="four wide column">
+		Stuff
+	</div>
+	<div class="twelve wide column">
+		<div class="ui items">
+			<% @shops.each do |shop| %>
+				<div class="item">
+					<div class="image">
+						Image	
+					</div>
+					<div class="content">
+						<%= link_to shop.japanese_name, shop, class: "header" %>
+						<div class="meta">
+							<span>Desc...</span>
+						</div>
+						<div class="description">
+							<p>Some interesting info goes here.</p>
+						</div>
+						<div class="extra">
+							<i class="empty heart icon"></i>
+							<i class="star icon"></i>
+							<i class="smile icon"></i>
+						</div>
+					</div>
+					<%# if current_user.present? && current_user.admin? %>
+					<%#= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%# end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<style>
+#shop-index-container {
+	text-align: left;
+}
+</style>
