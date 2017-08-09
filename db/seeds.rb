@@ -54,4 +54,4 @@ azabu_coffee_review = Review.create(comment: 'Great!', shop: azabu_coffee, user:
 puts 'Creating photos'
 Photo.create(link: 'shop-5.jpg', user: lachlan, shop: azabu_coffee)
 Photo.create(link: 'shop-2.jpg', user: lily, shop: honolulu_coffee)
-Photo.create(link: 'shop-3.jpg', user: lachlan, shop: starbucks_azabu_juban)
+Photo.create(link: 'shop-1.jpg', user: lachlan, shop: starbucks_azabu_juban)

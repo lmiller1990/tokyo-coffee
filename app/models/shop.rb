@@ -4,4 +4,6 @@ class Shop < ApplicationRecord
   belongs_to :district 
 	has_many :photos, dependent: :destroy
   has_many :reviews, dependent: :destroy
+
+	# has_and_belongs_to_many :facilities
 end
