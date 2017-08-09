@@ -1,9 +1,14 @@
 require "test_helper"
 
-describe Facility do
-  let(:facility) { Facility.new }
+class FacilityTest < ActiveSupport::TestCase
+	def setup 
+		@shop = shops(:shop_one)
+		@facility = Facility.create(name: 'Wifi')
+		@facility.shops << @shop
+	end
 
-  it "must be valid" do
-    value(facility).must_be :valid?
-  end
+	test 'should be valid' do
+		assert @facility.valid?
+		assert_equal @facility.shops.count, 1
+	end
 end

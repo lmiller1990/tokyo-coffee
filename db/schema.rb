@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809035923) do
+ActiveRecord::Schema.define(version: 20170809114146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20170809035923) do
     t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "facilities_shops", id: false, force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.bigint "facility_id", null: false
+    t.index ["facility_id"], name: "index_facilities_shops_on_facility_id"
+    t.index ["shop_id"], name: "index_facilities_shops_on_shop_id"
   end
 
   create_table "photos", force: :cascade do |t|
