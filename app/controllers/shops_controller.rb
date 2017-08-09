@@ -32,7 +32,6 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-		# @district_options = District.all.map { |d| [d.japanese_name, d.id] }
 
     if @shop.save
       flash[:success] = "Thank you for registering #{@shop.japanese_name}."
@@ -51,7 +50,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:id, :japanese_name, :district_id, :shop_district_id)# district_attributes: [:district_id])
+    params.require(:shop).permit(:id, :japanese_name, :district_id, :shop_district_id)
   end
 
   def admin_user
