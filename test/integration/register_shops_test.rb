@@ -36,6 +36,6 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
       }
     end
     follow_redirect!
-    assert_select ".shop.name", /Shoppy/
+		assert_select ".ui.header", /Shoppy/
   end
 end

@@ -6,7 +6,7 @@
 			<%= @shop.district.japanese_name %>
 		</h4>
 		<div class="ui fluid image">
-			<%= image_tag @shop.photos.first.link %>
+			<%= image_tag @shop.photos.first.link unless @shop.photos.empty? %>
 		</div>
 		<div class="description">
 			<%= @shop.description %>
@@ -19,7 +19,7 @@
 
 	<div class="ten wide column">
 		<div class="row">
-			<%= render partial: 'reviews/form', shop: @shop  %>
+			<%#= render partial: 'reviews/form', } %>
 			Add a review
 		</div>
 		<div class="ui feed">
