@@ -1,7 +1,7 @@
 <% provide(:button_text, 'Update Review') %>
 <h4>Edit Review</h4>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { review: @review, shop: @shop } %>
 
 <%= @review.id %> - <%= @review.comment %>
 

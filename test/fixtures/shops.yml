@@ -7,3 +7,7 @@ shop_one:
 shop_two:
   japanese_name: best_coffee_tokyo
   district: district_one
+
+shop_no_reviews:
+  japanese_name: shop_no_reviews
+  district: district_one

@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
 		if (@review.save)
 			flash[:success] = 'Review created'
-			redirect_to shop_review_path(@shop, @review)
+			redirect_to @shop
 		else
 			render 'new'
 		end
