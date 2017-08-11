@@ -10,6 +10,8 @@
 		<%= f.text_field :station %>
 	</div>
 
+	<%= f.collection_check_boxes(:facility_ids, Facility.all, :id, :name) %>
+
 	<div class="field">
 		<%= f.label :description, '紹介文' %>
 		<%= f.text_area :description %>

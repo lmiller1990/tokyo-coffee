@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  icon: MyString
+wifi:
+  name: Wifi
+  icon: wifi icon
 
-two:
-  name: MyString
-  icon: MyString
+food:
+  name: Food
+  icon: food icon
+
+coffee:
+  name: Coffee
+  icon: coffee icon

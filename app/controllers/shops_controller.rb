@@ -51,7 +51,13 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:id, :japanese_name, :station, :description)
+    params
+			.require(:shop)
+			.permit(:id, 
+							:japanese_name, 
+							:station, 
+							:description, 
+							{ facility_ids: [] })
   end
 
   def admin_user

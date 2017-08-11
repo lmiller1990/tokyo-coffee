@@ -50,12 +50,19 @@ azabu_coffee = Shop.create!(japanese_name: '麻布コーヒー', english_name: '
 honolulu_coffee = Shop.create!(japanese_name: 'ホノルルコーヒー', english_name: 'Honolulu Coffee', district: azabu_juban, station: "渋谷駅")
 starbucks_azabu_juban = Shop.create!(japanese_name: 'スタバックス麻布十番店舗;', english_name: 'Starbucks Azabu Juban', district: azabu_juban, description: "執筆できるて、いずれの考慮はないでもするますある。", additional_details: "休日ははやくしまるときもあります", station: "渋谷駅")
 
-puts 'Creating reviews'
+puts 'Creating reviews...'
 azabu_coffee_review = Review.create!(comment: '私は今とうていその忠告順というののためにありなた。かく生涯にぼんやり人もしかるにその講演だないだけをすれているなかっにもぼんやりありたたて、そうには飛びなけれうますない。人数がしない訳はまるで今日がもっとでしょたいた', shop: azabu_coffee, user: lachlan)
 
 Review.create!(comment: '初めて槙君を学問酒ある程度推察に唱えな党派その年それか批評がについてお附随たたでですて、この当時は私か釣精神に聞いて、嘉納さんののに坊ちゃんの何がやはり同理解とくっついて私右にお学習を来ようにもっともお講演に見るですですば、もし同時に相当から知れうているませ事を困るべきまし。', shop: azabu_coffee, user: lachlan)
 
-puts 'Creating photos'
+puts 'Creating photos...'
 Photo.create!(link: 'shop-5.jpg', user: lachlan, shop: azabu_coffee)
 Photo.create!(link: 'shop-2.jpg', user: lily, shop: honolulu_coffee)
 Photo.create!(link: 'shop-1.jpg', user: lachlan, shop: starbucks_azabu_juban)
+
+puts 'Creating facilties...'
+Facility.create!(name: 'Wifi', icon: 'wifi icon')
+Facility.create!(name: 'Coffee', icon: 'coffee icon')
+Facility.create!(name: 'Food', icon: 'food icon')
+Facility.create!(name: 'Powerpoint', icon: 'pause circle outline ico ')
+

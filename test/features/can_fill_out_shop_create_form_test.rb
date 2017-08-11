@@ -2,6 +2,8 @@ require "test_helper"
 
 class CanFillOutShopCreateFormTest < Capybara::Rails::TestCase
 	def setup
+		@wifi = facilities(:wifi)
+		@food  = facilities(:food)
 		@district = districts(:district_one)
 		@password = "password"
 		@confirmed_user = User.create(email: "#{rand(4000)}@example.com",
@@ -18,7 +20,10 @@ class CanFillOutShopCreateFormTest < Capybara::Rails::TestCase
 			visit new_shop_path
 			fill_in 'shop[japanese_name]', with: 'japanese name of shop'
 			fill_in 'shop[station]', with: 'Shinjuku'
+			page.find("#shop_facility_ids_#{@wifi.id}").set(true)
+			page.find("#shop_facility_ids_#{@food.id}").set(true)
 			click_button '登録'
 		end
+		assert_equal Shop.last.facilities.count, 2
 	end
 end
