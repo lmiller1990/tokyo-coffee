@@ -67,8 +67,6 @@ ActiveRecord::Schema.define(version: 20170811123516) do
     t.boolean "registration_approved", default: false, null: false
     t.string "description"
     t.string "additional_details"
-    t.string "station_name"
-    t.string "address"
     t.string "station"
   end
 

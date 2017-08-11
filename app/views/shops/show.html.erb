@@ -1,48 +1,16 @@
 <% provide(:button_text, "投稿") %>
 <div class="ui stackable grid container" id="shop-index-container">
 	<div class="six wide column">
-
-		<h4 class="ui header">
-			<%= @shop.japanese_name %>
-			<%= @shop.station %>
-		</h4>
-		<div class="ui fluid image">
-			<%= image_tag @shop.photos.first.link unless @shop.photos.empty? %>
-		</div>
-		<div class="description">
-			<%= @shop.description %>
-		</div>
-		<div class="extra">
-			<i class="red warning icon"></i>
-			<%= @shop.additional_details %>
-		</div>
+		<%= render partial: 'shop_card_summary', locals: { shop: @shop } %>
 	</div>
 
 	<div class="ten wide column">
 		<div class="row">
 			<%= render partial: 'reviews/form', locals: { shop: @shop, review: @review} %>
-			Add a review
 		</div>
 		<div class="ui feed">
 			<% @shop.reviews.order_by_most_recent.each do |review| %>
-				<div class="event">
-					<div class="content">
-						<div class="summary">
-							<a class="user" href="#">
-								<%= review.user.email %>
-							</a> レビューを投稿しました。
-							<div class="date">
-								<%= time_ago_in_words(review.created_at) %> ago.
-							</div>
-						</div>
-						<div class="extra text" id="review-comment">
-							<%= review.comment %>
-						</div>
-						<div class="meta">
-							<!-- likes or whatever? -->
-						</div>
-					</div>
-				</div>
+				<%= render partial: 'reviews/review', locals: { review: review } %>
 			<% end %>
 		</div>
 	</div>
