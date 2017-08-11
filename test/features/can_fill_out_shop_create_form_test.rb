@@ -17,7 +17,7 @@ class CanFillOutShopCreateFormTest < Capybara::Rails::TestCase
 			click_on 'Log in'
 			visit new_shop_path
 			fill_in 'shop[japanese_name]', with: 'japanese name of shop'
-			select @district.japanese_name, from: 'shop[district_id]'
+			fill_in 'shop[station]', with: 'Shinjuku'
 			click_button '登録'
 		end
 	end

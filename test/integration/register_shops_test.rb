@@ -31,7 +31,7 @@ class RegisterShopsTest < ActionDispatch::IntegrationTest
       post shops_path, params: {
         shop: {
           japanese_name: 'Shoppy',
-          district_id: @district.id
+					station: 'Shibuya eki'
         }
       }
     end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ShopTest < ActiveSupport::TestCase
   def setup
-    @shop = Shop.new(japanese_name: 'Test shop', district: District.new)
+    @shop = Shop.new(japanese_name: 'Test shop', station: 'Shinjuku')
   end
 
   test 'should be valid' do

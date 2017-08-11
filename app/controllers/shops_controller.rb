@@ -35,7 +35,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
 
     if @shop.save
-      flash[:success] = "Thank you for registering #{@shop.japanese_name}."
+			flash[:success] = "Thank you for registering." 
       redirect_to @shop
     else
       render 'new'
@@ -51,7 +51,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:id, :japanese_name, :district_id, :shop_district_id)
+    params.require(:shop).permit(:id, :japanese_name, :station, :description)
   end
 
   def admin_user

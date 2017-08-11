@@ -16,7 +16,7 @@ class ShopEditAndUpdateTest < ActionDispatch::IntegrationTest
     patch shop_path(@shop), params: {
       shop: {
         japanese_name: '',
-        district_id: 1
+				station: ''
       }
     }
     assert_template 'shops/edit'
@@ -28,8 +28,8 @@ class ShopEditAndUpdateTest < ActionDispatch::IntegrationTest
     assert_template 'shops/edit'
     patch shop_path(@shop), params: {
       shop: {
-        district_id: @district.id,
-        japanese_name: 'New updated name'
+        japanese_name: 'New updated name',
+				station: 'Shibuya station'
       }
     }
     assert_not flash.empty?

@@ -5,25 +5,19 @@
 		<%= f.text_field :japanese_name %>
 	</div>
 
+	<div class="field">
+		<%= f.label :station, '最寄り駅' %>
+		<%= f.text_field :station %>
+	</div>
 
 	<div class="field">
-		<label for="shop_district_id">場所</label>
-		<%= select('shop', 
-							 'district_id', 
-							 District.all.collect { |d| [ d.japanese_name, d.id ] },
-							 { },
-							 { class: 'ui dropdown' }) %>
+		<%= f.label :description, '紹介文' %>
+		<%= f.text_field :description %>
 	</div>
+
   <%= f.submit yield(:button_text), class: 'ui basic green fluid button' %>
 
 <% end %>
-
-<script>
-$(document).ready(function() {
-	console.log('init dropdown')
-	$('.ui.dropdown').dropdown()
-})
-</script>
 
 <style>
 .ui.form {
