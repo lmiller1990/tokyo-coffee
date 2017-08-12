@@ -1,13 +1,15 @@
 <% provide(:button_text, "投稿") %>
 <div class="ui stackable grid container" id="shop-index-container">
-	<div class="six wide column">
+	<div class="four wide column">
 		<%= render partial: 'shop_card_summary', locals: { shop: @shop } %>
 	</div>
 
-	<div class="ten wide column">
-		<div class="row">
-			<%= render partial: 'reviews/form', locals: { shop: @shop, review: @review} %>
-		</div>
+	<div class="seven wide column">
+		<% if current_user %>
+			<div class="row">
+				<%= render partial: 'reviews/form', locals: { shop: @shop, review: @review} %>
+			</div>
+		<% end %>
 		<div class="ui feed">
 			<% @shop.reviews.order_by_most_recent.each do |review| %>
 				<%= render partial: 'reviews/review', locals: { review: review } %>
@@ -17,11 +19,6 @@
 </div>
 
 <style>
-.right.extra {
-	display: flex !important;
-	justify-content: flex-end; 
-}
-
 		@media (min-width: 768px) {
 			#shop-index-container {
 				text-align: left;

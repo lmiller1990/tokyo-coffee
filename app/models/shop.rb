@@ -7,4 +7,6 @@ class Shop < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
 	has_and_belongs_to_many :facilities
+
+	scope :first_four, -> { order(created_at: :desc).limit(4) }
 end

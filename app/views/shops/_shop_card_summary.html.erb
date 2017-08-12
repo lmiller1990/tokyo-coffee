@@ -1,5 +1,5 @@
 <div class="item">
-	<div class="image">
+	<div class="ui fluid image">
 		<%= image_tag shop.photos.first.link unless shop.photos.first.nil? %>
 	</div>
 	<div class="content">
@@ -10,11 +10,9 @@
 			<p><%= shop.description %></p>
 		</div>
 		<div class="extra">
-			<i class="wifi icon"></i>
-			<i class="pause circle outline icon"></i>
-			<i class="volume down icon"></i>
-			<i class="food icon"></i>
-			<i class="coffee icon"></i>
+			<% shop.facilities.each do |f| %>
+				<i class="<%= f.icon %>"></i>
+			<% end %>
 		</div>
 		<div class="right extra">
 			<i class="instagram icon"></i>
@@ -26,3 +24,9 @@
 	<%#= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %>
 	<%# end %>
 </div>
+<style>
+.right.extra {
+	display: flex !important;
+	justify-content: flex-end; 
+}
+</style>

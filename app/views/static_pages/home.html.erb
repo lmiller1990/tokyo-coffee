@@ -1,43 +1,63 @@
 <% provide(:title, "Home") %>
 
-<%= image_tag("bg-1.jpg", class: "splash-image") %>
+<%#= image_tag("bg-1.jpg", class: "splash-image") %>
 
 <div class="ui text container" id="main-intro-container">
 
-	<div class="ui equal width grid">
-		<div class="column">
-			<!-- placeholder -->
-		</div>
+	<h2 class="ui header" id="main-attract-text">
+		東京の美味しいコーヒを、
+		発見しよう。
+	</h2>
 
-		<div class="twelve wide column">
-			<h2 class="ui header" id="main-attract-text">
-					東京の美味しいコーヒを、
-					発見しよう。
-			</h2>
-
-			<div class="ui icon fluid input">
-				<i class="search icon"></i>
-					<input type="text" placeholder="カフェ、または場所を入力・・・">
-			</div>
-		</div>
-
-		<div class="column">
-			<!-- placeholder -->
-		</div>
+	<div class="ui icon fluid input">
+		<i class="search icon"></i>
+		<input type="text" placeholder="カフェ、または場所を入力・・・">
 	</div>
 
+	<div class="ui four stackable cards" id="recommendations">
+		<% @shops.each do |shop| %>
+			<div class="card">
+				<div class="left aligned small content">
+					<p><%= shop.japanese_name %></p>
+				</div>
+				<a class="image" href="<%= shop_path(shop) %>">
+					<%= image_tag shop.photos.first.link unless shop.photos.first.nil? %>
+				</a>
+				<div class="content">
+					<div class="left floated">
+						<% shop.facilities.each do |f| %>
+							<i class="<%= f.icon %>"></i>
+						<% end %>
+					</div>
+					<div class="right floated meta">
+						<%= shop.station %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<form class="ui form" action="shops/new">
+	<button type="submit" class="ui right floated button">
+		カフェー新登録
+	</button></form>
 </div>
 
 <style>
-	#main-intro-container {
-		margin-top: 4em;
-	}
+#main-intro-container {
+	margin-top: 4em;
+}
 
-	#main-attract-text {
-		background: rgba(0, 0, 0, 0.6);
-		color: white;
-		font-size: 1.6em;
-		padding: 5px;
-		border-radius: 2px;
-	}
+#main-attract-text {
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	font-size: 1.6em;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+#recommendations {
+	margin-top: 2em;
+	margin-bottom: 0.4em;
+	font-size: 0.8em;
+}
 </style>

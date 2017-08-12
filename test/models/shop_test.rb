@@ -37,4 +37,9 @@ class ShopTest < ActiveSupport::TestCase
 
 		assert_equal @shop.facilities.count, 2
 	end
+
+	test 'shop first_four scope should return four shops' do
+		four_shops = Shop.all.first_four 
+		assert_equal four_shops.count, 4
+	end
 end

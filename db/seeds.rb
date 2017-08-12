@@ -48,6 +48,7 @@ puts 'Creating shops...'
 azabu_coffee = Shop.create!(japanese_name: '麻布コーヒー', english_name: 'Azabu Coffee', district: roppongi, description: "執筆できるて、いずれの考慮はないでもするますある。", additional_details: "休日ははやくしまるときもあります", station: "渋谷駅")
 
 honolulu_coffee = Shop.create!(japanese_name: 'ホノルルコーヒー', english_name: 'Honolulu Coffee', district: azabu_juban, station: "渋谷駅")
+blue_bottle = Shop.create!(japanese_name: 'Blue Bottle Coffee', english_name: 'Blue Bottle Coffee', district: azabu_juban, station: "銀座駅")
 starbucks_azabu_juban = Shop.create!(japanese_name: 'スタバックス麻布十番店舗;', english_name: 'Starbucks Azabu Juban', district: azabu_juban, description: "執筆できるて、いずれの考慮はないでもするますある。", additional_details: "休日ははやくしまるときもあります", station: "渋谷駅")
 
 puts 'Creating reviews...'
@@ -57,12 +58,24 @@ Review.create!(comment: '初めて槙君を学問酒ある程度推察に唱え�
 
 puts 'Creating photos...'
 Photo.create!(link: 'shop-5.jpg', user: lachlan, shop: azabu_coffee)
+Photo.create!(link: 'shop-4.jpg', user: lachlan, shop: blue_bottle)
 Photo.create!(link: 'shop-2.jpg', user: lily, shop: honolulu_coffee)
+Photo.create!(link: 'shop-1.jpg', user: lachlan, shop: starbucks_azabu_juban)
 Photo.create!(link: 'shop-1.jpg', user: lachlan, shop: starbucks_azabu_juban)
 
 puts 'Creating facilties...'
-Facility.create!(name: 'Wifi', icon: 'wifi icon')
-Facility.create!(name: 'Coffee', icon: 'coffee icon')
-Facility.create!(name: 'Food', icon: 'food icon')
-Facility.create!(name: 'Powerpoint', icon: 'pause circle outline ico ')
+wifi = Facility.create!(name: 'Wifi', icon: 'wifi icon')
+coffee = Facility.create!(name: 'Coffee', icon: 'coffee icon')
+food = Facility.create!(name: 'Food', icon: 'food icon')
+powerpoint = Facility.create!(name: 'Powerpoint', icon: 'pause circle outline ico ')
+
+
+azabu_coffee.facilities << wifi
+azabu_coffee.facilities << coffee
+azabu_coffee.facilities << food
+
+starbucks_azabu_juban.facilities << wifi
+honolulu_coffee.facilities << coffee
+blue_bottle.facilities << food
+blue_bottle.facilities << wifi
 
