@@ -1,5 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+shinjuku:
+  japanese_name: '新宿区'
+
 ward_one:
   japanese_name: MyString
   english_name: MyString

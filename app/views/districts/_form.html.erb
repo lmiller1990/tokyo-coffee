@@ -1,0 +1,13 @@
+<%= form_for(@district, html: { class: 'ui form' }) do |f| %>
+	<%#= render 'shared/error_messages' %>
+
+	<div class="field">
+		<%= f.label :japanese_name, 'エリア' %>
+		<%= f.text_field :japanese_name  %>
+	</div>
+
+	<div class="field">
+		<%= select('district', 'ward_id', @wards_collection) %>
+	</div>
+	<%= f.submit yield(:button_text), class: 'ui basic green fluid button' %>
+<% end %>
