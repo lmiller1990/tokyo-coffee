@@ -1,3 +1,5 @@
+require 'uri'
+
 class ShopsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :new, :destroy]
   before_action :admin_user, only: [:destroy]
@@ -16,11 +18,16 @@ class ShopsController < ApplicationController
   end
 
   def update
+		referrer = URI(request.referrer).path
     @shop = Shop.find(params[:id])
 
     if @shop.update_attributes(shop_params)
       flash[:success] = "#{@shop.japanese_name} updated."
-      redirect_to @shop
+			if (referrer == '/admin')
+				redirect_to admin_path
+			else
+				redirect_to @shop
+			end
     else
       render 'edit'
     end
@@ -57,6 +64,7 @@ class ShopsController < ApplicationController
 							:japanese_name, 
 							:station, 
 							:description, 
+							:registration_approved,
 							{ facility_ids: [] })
   end
 end

@@ -12,8 +12,10 @@ class AdminApprovesShopRegistrationTest < Capybara::Rails::TestCase
 		fill_in 'user[password]', with: 'password'
 		click_on 'Log in'
 		visit admin_path
+
 		assert_difference 'Shop.all.unapproved.count', -1 do
-			# stuff here.
+			find("#shop_#{@unapproved_shop.id}_registration_checkbox").set(true)
+			find(:css, "#shop_#{@unapproved_shop.id}_submit_button").click
 		end
 	end
 end

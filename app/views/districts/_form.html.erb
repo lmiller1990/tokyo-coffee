@@ -1,5 +1,5 @@
 <%= form_for(@district, html: { class: 'ui form' }) do |f| %>
-	<%#= render 'shared/error_messages' %>
+	<%= render partial: 'shared/error_messages', locals: { object: @district } %>
 
 	<div class="field">
 		<%= f.label :japanese_name, 'エリア' %>
@@ -9,5 +9,5 @@
 	<div class="field">
 		<%= select('district', 'ward_id', @wards_collection) %>
 	</div>
-	<%= f.submit yield(:button_text), class: 'ui basic green fluid button' %>
+	<%= f.submit yield(:district_button_text), class: 'ui basic green fluid button' %>
 <% end %>

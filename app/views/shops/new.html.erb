@@ -1,11 +1,11 @@
-<% provide(:button_text, '登録') %>
+<% provide(:shop_button_text, '登録') %>
 
 <h4 class="ui horizontal divider header container">
 	新しいカフェー登録
 </h4>
 <div class="ui equal width stackable grid container" id="new-shop-container">
 	<div class="ui column">
-		<%= render 'form' %>
+		<%= render partial: 'form', locals: { shop: @shop }%>
 	</div>
 	<div class="ui column">
 		<div class="ui vertical steps">

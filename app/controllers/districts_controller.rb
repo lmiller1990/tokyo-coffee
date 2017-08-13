@@ -2,7 +2,6 @@ class DistrictsController < ApplicationController
   before_action :admin_user
 
 	def create
-		puts 'Creating', district_params
 		@district = District.new(district_params)
 
 		if @district.save
