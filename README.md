@@ -1,24 +1,17 @@
-# README
+### Competitors
+1. 食べログ
+サイト：https://tabelog.com/
+キーワード：
+「気取らない仲間とに乾杯も特別な日をお寿司も。」
+「食べログであなたの思い出をより、「おいしく」
+「失敗しないお店選び」
+食べログは、「失敗しないお店選び」サイトです。日本最大級の店舗データベース。口コミ数１８５５万件以上。エリア、駅、キーワードでも検索できます。日付とか予約もできます。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ビジネスモデル：
+お金払ったら、プリミアム会員になること。なったら、クーポンをもらうことができます。もっと便利に検索ができます。どういう点でもっと便利になるかわかりません。月に三百円かかります。
+確かにサイト上で広告とかやっています。
 
-Things you may want to cover:
+ソーシャルメディア：
+https://www.facebook.com/tabelog/
+https://twitter.com/tabelog
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
