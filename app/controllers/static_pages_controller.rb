@@ -11,4 +11,8 @@ class StaticPagesController < ApplicationController
 		@wards_collection = Ward.all.collect { |w| [ w.japanese_name, w.id ] }
 		@unapproved_shops = Shop.all.unapproved
 	end
+
+	def area_search
+		@districts = District.all
+	end
 end
