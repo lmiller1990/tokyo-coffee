@@ -9,5 +9,6 @@ class StaticPagesController < ApplicationController
 	def admin
 		@district = District.new		
 		@wards_collection = Ward.all.collect { |w| [ w.japanese_name, w.id ] }
+		@unapproved_shops = Shop.all.unapproved
 	end
 end

@@ -1,5 +1,17 @@
 <% provide(:button_text, 'エリアを作成') %>
 <h4>管理ページ</h4>
 
-<%= render partial: 'districts/form' %>
+<div class="ui equal width stackable grid container" id="shop-index-container">
+	<div class="four wide column">
+		<%= render partial: 'districts/form' %>
+	</div>
+	<div class="six wide column">
+		
+		<% @unapproved_shops.each do |shop| %>
+			<%= render partial: 'shops/form', locals: { shop: shop } %>
+			<%= shop.japanese_name %> Approved? <%= shop.registration_approved %>
+		<% end %>
+	</div>
+</div>
+
 

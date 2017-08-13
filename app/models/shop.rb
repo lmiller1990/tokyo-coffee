@@ -9,4 +9,5 @@ class Shop < ApplicationRecord
 	has_and_belongs_to_many :facilities
 
 	scope :first_four, -> { order(created_at: :desc).limit(4) }
+	scope :unapproved, -> { where(registration_approved: false) }
 end

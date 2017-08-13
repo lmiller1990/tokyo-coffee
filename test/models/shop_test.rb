@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ShopTest < ActiveSupport::TestCase
   def setup
-    @shop = Shop.create!(japanese_name: 'Test shop', station: 'Shinjuku')
+    @shop = Shop.create!(japanese_name: 'Test shop', station: 'Shinjuku', registration_approved: true)
 		@wifi = facilities(:wifi)
 		@coffee = facilities(:coffee)
   end
@@ -41,5 +41,10 @@ class ShopTest < ActiveSupport::TestCase
 	test 'shop first_four scope should return four shops' do
 		four_shops = Shop.all.first_four 
 		assert_equal four_shops.count, 4
+	end
+
+	test 'shop unapproved scope should return unapproved shops' do
+		unapproved_shops = Shop.all.unapproved
+		assert_equal unapproved_shops.count, 3
 	end
 end

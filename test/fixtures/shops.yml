@@ -2,12 +2,20 @@
 
 shop_one:
   japanese_name: delicious_coffee_shop
+  registration_approved: false
   district: district_one
 
 shop_two:
   japanese_name: best_coffee_tokyo
+  registration_approved: false
   district: district_one
 
 shop_no_reviews:
   japanese_name: shop_no_reviews
   district: district_one
+  registration_approved: true
+
+unapproved_shop:
+  japanese_name: some_shop_name
+  station: shibuya
+  registration_approved: false
