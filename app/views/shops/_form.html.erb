@@ -20,6 +20,10 @@
 	<% end %>
 
 	<div class="field">
+		<%= select('shop', 'district_id', @districts) %>
+	</div>
+
+	<div class="field">
 		<%= f.label :description, '紹介文' %>
 		<%= f.text_area :description %>
 	</div>

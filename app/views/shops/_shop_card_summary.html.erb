@@ -1,6 +1,10 @@
 <div class="item">
 	<div class="ui fluid image">
-		<%= image_tag shop.photos.first.link unless shop.photos.first.nil? %>
+		<% if shop.photos.first %>
+			<%= image_tag shop.photos.first.link %>
+		<% else %>
+			<%= image_tag 'fallback-coffee.png' %>
+		<% end %>
 	</div>
 	<div class="content">
 		<%= link_to shop.japanese_name, shop, class: "header" %>

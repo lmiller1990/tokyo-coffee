@@ -15,6 +15,7 @@ class ShopsController < ApplicationController
 
   def edit
     @shop = Shop.find(params[:id])
+		@districts = District.all.collect { |d| [ d.japanese_name, d.id ] }
   end
 
   def update
@@ -35,7 +36,7 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    @districts = District.all
+		@districts = District.all.collect { |d| [ d.japanese_name, d.id ] }
   end
 
   def create
@@ -65,6 +66,7 @@ class ShopsController < ApplicationController
 							:station, 
 							:description, 
 							:registration_approved,
+							:district_id,
 							{ facility_ids: [] })
   end
 end

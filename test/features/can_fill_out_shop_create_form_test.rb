@@ -17,13 +17,16 @@ class CanFillOutShopCreateFormTest < Capybara::Rails::TestCase
 			fill_in 'user[email]', with: @confirmed_user.email
 			fill_in 'user[password]', with: @confirmed_user.password
 			click_on 'Log in'
+
 			visit new_shop_path
 			fill_in 'shop[japanese_name]', with: 'japanese name of shop'
 			fill_in 'shop[station]', with: 'Shinjuku'
+			select @district.japanese_name, from: 'shop[district_id]'
 			page.find("#shop_facility_ids_#{@wifi.id}").set(true)
 			page.find("#shop_facility_ids_#{@food.id}").set(true)
 			click_button '登録'
 		end
 		assert_equal Shop.last.facilities.count, 2
+		assert_not_nil Shop.last.district
 	end
 end

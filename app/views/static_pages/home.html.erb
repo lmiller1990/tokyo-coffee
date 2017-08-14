@@ -10,18 +10,19 @@
 	</h2>
 
 	<div class="ui buttons">
-		<button class="ui basic blue button">
+
+		<%= link_to area_search_path, class: 'ui basic blue button' do %>
 			<i class="marker icon"></i>
 			エリア
-		</button>
-		<button class="ui basic black button">
-				<i class="laptop icon"></i>
+		<% end %>
+		<%= link_to work_search_path, class: 'ui basic grey button' do %>
+			<i class="laptop icon"></i>
 			作業できる
-		</button>
-		<button class="ui basic pink button">
+		<% end %>
+		<%= link_to rating_search_path, class: 'ui basic pink button' do %>
 			<i class="empty heart icon"></i>
-				評価
-		</button>
+			評価
+		<% end %>
 	</div>
 
 	<div class="ui four stackable cards" id="recommendations">
@@ -31,7 +32,11 @@
 					<p><%= shop.japanese_name %></p>
 				</div>
 				<a class="image" href="<%= shop_path(shop) %>">
-					<%= image_tag shop.photos.first.link unless shop.photos.first.nil? %>
+					<% if shop.photos.first %>
+						<%= image_tag shop.photos.first.link %>
+					<% else %>
+						<%= image_tag 'fallback-coffee.png' %>
+					<% end %>
 				</a>
 				<div class="content">
 					<div class="left floated">
@@ -40,7 +45,7 @@
 						<% end %>
 					</div>
 					<div class="right floated meta">
-						<%= shop.station %>
+						<%= shop.station %> (<%= shop.district.japanese_name unless shop.district.nil? %>)
 					</div>
 				</div>
 			</div>

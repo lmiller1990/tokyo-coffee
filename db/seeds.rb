@@ -67,7 +67,7 @@ puts 'Creating facilties...'
 wifi = Facility.create!(name: 'Wifi', icon: 'wifi icon')
 coffee = Facility.create!(name: 'Coffee', icon: 'coffee icon')
 food = Facility.create!(name: 'Food', icon: 'food icon')
-powerpoint = Facility.create!(name: 'Powerpoint', icon: 'pause circle outline ico ')
+powerpoint = Facility.create!(name: 'Powerpoint', icon: 'pause circle outline icon')
 
 
 azabu_coffee.facilities << wifi
