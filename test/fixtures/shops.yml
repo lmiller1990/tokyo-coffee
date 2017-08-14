@@ -19,3 +19,11 @@ unapproved_shop:
   japanese_name: some_shop_name
   station: shibuya
   registration_approved: false
+
+shop_in_shibuya:
+  japanese_name: 渋谷にあるお店
+  english_name: Shibuya coffee
+  station: shibuya
+  registration_approved: true
+  district: shibuya
+

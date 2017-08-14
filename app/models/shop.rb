@@ -10,4 +10,5 @@ class Shop < ApplicationRecord
 
 	scope :first_four, -> { order(created_at: :desc).limit(4) }
 	scope :unapproved, -> { where(registration_approved: false) }
+	scope :in_area, ->(district_id = nil) { where(district_id: district_id) }
 end

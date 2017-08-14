@@ -1,7 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 shinjuku:
-  japanese_name: '新宿区'
+  japanese_name: 新宿区
+  english_name: Shinjuku
+
+shibuya:
+  japanese_name: 渋谷区
+  english_name: Shibuya
 
 ward_one:
   japanese_name: MyString
