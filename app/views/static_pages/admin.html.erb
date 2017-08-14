@@ -13,7 +13,7 @@
 			<div class="left aligned">
 				<h4 style="margin: 1em 1em"><%= shop.japanese_name %> (<%= time_ago_in_words(shop.created_at) %>前に登録された)</h4>
 			</div>
-			<%= render partial: 'shops/form', locals: { shop: shop } %>
+			<%= render partial: 'shops/form', locals: { shop: shop, districts: @districts } %>
 		<% end %>
 	</div>
 </div>

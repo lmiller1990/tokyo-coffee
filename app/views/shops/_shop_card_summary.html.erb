@@ -1,36 +1,19 @@
-<div class="shop item">
-	<div class="ui fluid image">
-		<% if shop.photos.first %>
-			<%= image_tag shop.photos.first.link %>
-		<% else %>
-			<%= image_tag 'fallback-coffee.png' %>
-		<% end %>
-	</div>
+<div class="ui fluid card">
+
 	<div class="content">
-		<%= link_to shop.japanese_name, shop, class: "header" %>
-		<div class="meta">
-		</div>
-		<div class="description">
-			<p><%= shop.description %></p>
-		</div>
-		<div class="extra">
-			<% shop.facilities.each do |f| %>
-				<i class="<%= f.icon %>"></i>
-			<% end %>
-		</div>
-		<div class="right extra">
-			<i class="instagram icon"></i>
-			<i class="facebook icon"></i>
-			<i class="snapchat icon"></i>
+		<%= shop.japanese_name %>
+	</div>
+
+	<%= render partial: 'shop_card_image', locals: { shop: shop } %>
+
+	<div class="content">
+		<div>
+			<%= shop.district.japanese_name %>
+			<div class="right floated meta">
+				<% shop.facilities.each do |f| %>
+					<i class="<%= f.icon %>"></i>
+				<% end %>
+			</div>
 		</div>
 	</div>
-	<%# if current_user.present? && current_user.admin? %>
-	<%#= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %>
-	<%# end %>
 </div>
-<style>
-.right.extra {
-	display: flex !important;
-	justify-content: flex-end; 
-}
-</style>

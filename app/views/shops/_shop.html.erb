@@ -1,0 +1,26 @@
+<div class="shop item" id="shop-item">
+	<div class="image">
+		<% if shop.photos.first %>
+			<%= image_tag shop.photos.first.link %>
+		<% else %>
+			<%= image_tag 'fallback-coffee.png' %>
+		<% end %>
+	</div>
+	<div class="content">
+		<a class="header" href="<%= shop %>"><%= shop.japanese_name %></a>
+		<div class="meta">
+			<span class="description">
+				<%= shop.district.japanese_name %>
+			</span>
+		</div>
+		<div class="description">
+			<%= shop.description %>
+		</div>
+	</div>
+</div>
+
+<style>
+#shop-item {
+	min-height: 150px;
+}
+</style>

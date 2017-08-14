@@ -1,0 +1,7 @@
+<div class="ui fluid image">
+	<% if shop.photos.first %>
+		<%= image_tag shop.photos.first.link %>
+	<% else %>
+		<%= image_tag 'fallback-coffee.png' %>
+	<% end %>
+</div>

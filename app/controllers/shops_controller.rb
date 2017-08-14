@@ -70,8 +70,8 @@ class ShopsController < ApplicationController
 							:japanese_name, 
 							:station, 
 							:description, 
-							:registration_approved,
 							:district_id,
+							:registration_approved,
 							{ facility_ids: [] })
   end
 end

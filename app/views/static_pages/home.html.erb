@@ -2,34 +2,22 @@
 
 <%#= image_tag("bg-1.jpg", class: "splash-image") %>
 
-<div class="ui text container" id="main-intro-container">
+<div class="ui container" id="main-intro-container">
 
 	<h2 class="ui header" id="main-attract-text">
 		東京の美味しいコーヒを、
 		発見しよう。
 	</h2>
 
-	<div class="ui buttons">
-
-		<%= link_to area_search_path, class: 'ui basic blue button' do %>
-			<i class="marker icon"></i>
-			エリア
-		<% end %>
-		<%= link_to work_search_path, class: 'ui basic grey button' do %>
-			<i class="laptop icon"></i>
-			作業できる
-		<% end %>
-		<%= link_to rating_search_path, class: 'ui basic pink button' do %>
-			<i class="empty heart icon"></i>
-			評価
-		<% end %>
-	</div>
+	<%= render partial: 'static_pages/search_buttons' %>
 
 	<div class="ui four stackable cards" id="recommendations">
 		<% @shops.each do |shop| %>
 			<div class="card">
-				<div class="left aligned small content">
-					<p><%= shop.japanese_name %></p>
+				<div class="left aligned content">
+					<div class="header">
+						<%= shop.japanese_name %>
+					</div>
 				</div>
 				<a class="image" href="<%= shop_path(shop) %>">
 					<% if shop.photos.first %>
@@ -52,9 +40,9 @@
 		<% end %>
 	</div>
 	<form class="ui form" action="shops/new">
-	<button type="submit" class="ui right floated button">
-		カフェー新登録
-	</button></form>
+		<button type="submit" class="ui right floated button">
+			カフェー新登録
+		</button></form>
 </div>
 
 <style>

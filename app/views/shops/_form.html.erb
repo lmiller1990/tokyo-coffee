@@ -20,7 +20,7 @@
 	<% end %>
 
 	<div class="field">
-		<%= select('shop', 'district_id', @districts) %>
+		<%= f.select('district_id', options_for_select(districts, shop.district_id)) %>
 	</div>
 
 	<div class="field">
