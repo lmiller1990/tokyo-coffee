@@ -5,7 +5,12 @@ class ShopsController < ApplicationController
   before_action :admin_user, only: [:destroy]
 
   def index
-    @shops = Shop.all
+		district_id = params[:area]	
+		if district_id.nil?
+			@shops = Shop.approved
+		else
+			@shops = Shop.in_area(district_id).approved
+		end
   end
 
   def show

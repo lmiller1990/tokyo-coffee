@@ -1,13 +1,10 @@
 require 'test_helper'
 
 class UserSearchesForAShopByAreaTest < Capybara::Rails::TestCase
-	def setup
-	end
-
 	test "succesfully searches for shops in an area" do
 		visit area_search_path
-		puts body
 		click_on '渋谷'
-		skip('TODO: Implement this.')
+		assert_selector '.shop.item', count: 1
+		assert_selector '.shop.item', text: /渋谷にあるお店/
 	end
 end

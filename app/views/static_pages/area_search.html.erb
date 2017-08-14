@@ -2,15 +2,17 @@
 	<h4 class="ui header">
 		エリアで検索
 	</h4>
+
 	<% @districts.each do |d| %>
-		<button class="ui basic grey button district-button">
-			<%= d.japanese_name %>
-		</button>
+		<%= button_to d.japanese_name, shops_path, { method: :get, class: 'ui basic grey button district-button', params: { area: d.id } } %>
 	<% end %>
 </div>
 
 <style>
-	.district-button {
-		margin-bottom: 5px !important;
-	}
+.button_to {
+	display: inline-block;
+}
+.district-button {
+	margin-bottom: 5px !important;
+}
 </style>
