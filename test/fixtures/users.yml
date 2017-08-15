@@ -9,3 +9,18 @@
 #
 # two: {}
 # column: value
+
+admin_user:
+  email: admin@tokyo-coffee.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  admin: true
+
+regular_user:
+  email: regular@tokyo-coffee.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  admin: false
+
+another_user:
+  email: another@tokyo-coffee.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  admin: false

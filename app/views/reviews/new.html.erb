@@ -1,4 +1,4 @@
 <% provide(:button_text, 'Submit Review') %>
 <h4>Create review</h4>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { shop: @shop, review: @review } %>

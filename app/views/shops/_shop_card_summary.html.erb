@@ -1,0 +1,19 @@
+<div class="ui fluid card">
+
+	<div class="content">
+		<%= shop.japanese_name %>
+	</div>
+
+	<%= render partial: 'shop_card_image', locals: { shop: shop } %>
+
+	<div class="content">
+		<div>
+			<%= shop.district.japanese_name %>
+			<div class="right floated meta">
+				<% shop.facilities.each do |f| %>
+					<i class="<%= f.icon %>"></i>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

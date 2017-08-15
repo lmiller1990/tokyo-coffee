@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+wifi:
+  name: wifi
+  icon: wifi icon
+
+food:
+  name: food
+  icon: food icon
+
+coffee:
+  name: coffee
+  icon: coffee icon

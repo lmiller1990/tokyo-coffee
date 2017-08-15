@@ -1,25 +1,41 @@
+require 'uri'
+
 class ShopsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :new, :destroy]
   before_action :admin_user, only: [:destroy]
 
   def index
-    @shops = Shop.all
+	  facilties_to_filter_by = params[:facility_ids] ||= nil
+
+		district_id = params[:area]	
+		if district_id.nil?
+			@shops = Shop.approved
+		else
+			@shops = Shop.in_area(district_id).approved
+		end
   end
 
   def show
     @shop = Shop.find(params[:id])
+		@review = Review.new(user: current_user, shop: @shop)
   end
 
   def edit
     @shop = Shop.find(params[:id])
+		@districts = District.all.collect { |d| [ d.japanese_name, d.id ] }
   end
 
   def update
+		referrer = URI(request.referrer).path
     @shop = Shop.find(params[:id])
 
     if @shop.update_attributes(shop_params)
       flash[:success] = "#{@shop.japanese_name} updated."
-      redirect_to @shop
+			if (referrer == '/admin')
+				redirect_to admin_path
+			else
+				redirect_to @shop
+			end
     else
       render 'edit'
     end
@@ -27,13 +43,14 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    @districts = District.all
+		@districts = District.all.collect { |d| [ d.japanese_name, d.id ] }
   end
 
   def create
     @shop = Shop.new(shop_params)
+
     if @shop.save
-      flash[:success] = "Thank you for registering #{@shop.japanese_name}."
+			flash[:success] = "Thank you for registering." 
       redirect_to @shop
     else
       render 'new'
@@ -49,10 +66,14 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:japanese_name, :district_id)
-  end
-
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
+    params
+			.require(:shop)
+			.permit(:id, 
+							:japanese_name, 
+							:station, 
+							:description, 
+							:district_id,
+							:registration_approved,
+							{ facility_ids: [] })
   end
 end

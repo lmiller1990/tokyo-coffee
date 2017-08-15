@@ -1,9 +1,28 @@
 <h4>All Cafes</h4>
 
-<ul>
-  <% @shops.each do |shop| %>
-    <li>
-      <%= link_to shop.japanese_name, shop %> <% if current_user.present? && current_user.admin? %><%= link_to 'delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-    </li>
-  <% end %>
-</ul>
+<div class="ui equal width stackable grid container" id="shop-index-container">
+	<div class="four wide column">
+		Stuff
+	</div>
+	<div class="eight wide column">
+		<div class="ui items">
+			<% @shops.each do |shop| %>
+				<%= render partial: 'shop', locals: { shop: shop } %>
+				<%#= render partial: 'shop_card_summary', locals: { shop: shop } %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<style>
+.right.extra {
+	display: flex !important;
+	justify-content: flex-end; 
+}
+
+@media (min-width: 768px) {
+	#shop-index-container {
+		text-align: left;
+	}
+}
+</style>

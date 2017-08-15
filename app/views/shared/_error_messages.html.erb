@@ -1,7 +1,7 @@
-<% if @shop.errors.any? %>
-  This form contains <%= pluralize(@shop.errors.count, "error") %>.
+<% if object.errors.any? %>
+  This form contains <%= pluralize(object.errors.count, "error") %>.
   <ul>
-    <% @shop.errors.full_messages.each do |error| %>
+    <% object.errors.full_messages.each do |error| %>
       <li class="error message">
         <%= error %>
       </li>

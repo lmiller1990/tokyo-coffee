@@ -11,7 +11,7 @@ class DeleteShopTest < ActionDispatch::IntegrationTest
                                   password: @password,
                                   admin: false)
 
-    @shop = shops(:shop_one)
+    @shop = shops(:shop_without_coffee)
   end
 
   test "only an admin can delete a shop" do

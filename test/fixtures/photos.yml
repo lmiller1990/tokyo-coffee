@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+photo_one:
+  link: shop-1.jpg
+  user: admin_user
+  shop: shop_one
+
+photo_two:
+  link: shop-2.jpg
+  user: admin_user
+  shop: shop_two

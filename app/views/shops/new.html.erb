@@ -1,4 +1,47 @@
-<% provide(:button_text, 'Register Cafe') %>
-<h4>New Shop</h4>
+<% provide(:shop_button_text, '登録') %>
 
-<%= render 'form' %>
+<h4 class="ui horizontal divider header container">
+	新しいカフェー登録
+</h4>
+<div class="ui equal width stackable grid container" id="new-shop-container">
+	<div class="ui column">
+		<%= render partial: 'form', locals: { shop: @shop, districts: @districts }%>
+	</div>
+	<div class="ui column">
+		<div class="ui vertical steps">
+			<div class="step">
+				<i class="blue laptop icon"></i>
+				<div class="content">
+					登録
+				</div>
+				<div class="description">
+					カフェーの情報を入力
+				</div>
+			</div>
+			<div class="step">
+				<i class="green check icon"></i>
+				<div class="content">
+					確認
+				</div>
+				<div class="description">
+					登録の確認は、数日かかる
+				</div>
+			</div>
+			<div class="step">
+				<i class="brown coffee icon"></i>
+				<div class="content">
+					完了
+				</div>
+				<div class="description">
+					一番好きなコーヒーをシェアする！
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+#new-shop-container {
+	margin-top: 3em;
+}
+</style>

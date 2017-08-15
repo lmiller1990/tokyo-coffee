@@ -1,5 +1,5 @@
 <h4>Reviews</h4>
 
-<% Review.all.each do |review| %>
+<% @reviews.each do |review| %>
 	Id: <%= review.id %> Comment: <%= review.comment %>
 <% end %>

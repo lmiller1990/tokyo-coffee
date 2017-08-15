@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 district_one:
-  japanese_name: MyString
-  english_name: MyString
+  japanese_name: district_one_japanese_name
+  english_name: district_one_english_name
   ward: ward_one
 
 district_two:
   japanese_name: MyString
   english_name: MyString
   ward: ward_one
+ 
+shibuya:
+  japanese_name: 渋谷
+  english_name: Shibuya
+  ward: shibuya
+
+shinjuku:
+  japanese_name: 新宿
+  english_name: Shinjuku
+  ward: shinjuku

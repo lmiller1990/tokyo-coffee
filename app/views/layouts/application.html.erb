@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= yield(:title) %> | 東京コーヒー・カフェー</title>
-    <%= csrf_meta_tags %>
+	<head>
+		<title><%= yield(:title) %> | 東京コーヒー・カフェー</title>
+		<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
-  <body>
-    <%= render 'layouts/header' %>
+		<%= csrf_meta_tags %>
 
-    <% flash.each do |message_type, message| %>
-      <div class="<%= "#{message_type}" %> message">
-        <%= message %>
-      </div>
-    <% end %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-  </body>
+	<body>
+		<div class="pusher">
+			<div class="ui vertical center aligned segment">
+				<%= render 'layouts/header' %>
+
+				<% flash.each do |message_type, message| %>
+					<div class="<%= "#{message_type}" %> message">
+						<%= message %>
+					</div>
+				<% end %>
+
+				<%= yield %>
+			</div>
+		</div>
+		<%#= debug(params) if Rails.env.development? %>
+	</body>
 </html>

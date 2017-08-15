@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserCreatesAReviewTest < ActionDispatch::IntegrationTest
 	def setup
-    @shop = shops(:shop_one)
+    @shop = shops(:shop_without_coffee)
     @district = districts(:district_one)
     @password = "password"
     @user = User.create(email: "#{rand(4000)}@example.com", 
@@ -16,7 +16,7 @@ class UserCreatesAReviewTest < ActionDispatch::IntegrationTest
 		
 		assert_difference 'Review.count', 1 do
 		post shop_reviews_path, params: {
-			shop: @shop,
+			shop_id: @shop.id,
 			review: {
 				comment: 'Some comment'
 			}
@@ -29,17 +29,11 @@ class UserCreatesAReviewTest < ActionDispatch::IntegrationTest
 
 		assert_no_difference 'Review.count' do
 			post shop_reviews_path, params: {
-				shop: @shop,
+				shop_id: @shop.id,
 				review: {
 					comment: 'Some comment'
 				}
 			}
 		end
-	end
-
-	test "users fills in a form to create a review" do
-    sign_in(user: @user, password: @password)
-		# visit new_shop_review_path(@shop)
-		# assert_template 'reviews/new'
 	end
 end

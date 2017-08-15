@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804153625) do
+ActiveRecord::Schema.define(version: 20170811123516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,30 @@ ActiveRecord::Schema.define(version: 20170804153625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ward_id"], name: "index_districts_on_ward_id"
+  end
+
+  create_table "facilities", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facilities_shops", id: false, force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.bigint "facility_id", null: false
+    t.index ["facility_id"], name: "index_facilities_shops_on_facility_id"
+    t.index ["shop_id"], name: "index_facilities_shops_on_shop_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "link"
+    t.bigint "user_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_photos_on_shop_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -37,9 +61,13 @@ ActiveRecord::Schema.define(version: 20170804153625) do
   create_table "shops", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "district_id", null: false
+    t.integer "district_id"
     t.string "japanese_name"
     t.string "english_name"
+    t.boolean "registration_approved", default: false, null: false
+    t.string "description"
+    t.string "additional_details"
+    t.string "station"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,6 +97,8 @@ ActiveRecord::Schema.define(version: 20170804153625) do
   end
 
   add_foreign_key "districts", "wards"
+  add_foreign_key "photos", "shops"
+  add_foreign_key "photos", "users"
   add_foreign_key "reviews", "shops"
   add_foreign_key "reviews", "users"
 end

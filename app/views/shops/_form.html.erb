@@ -1,19 +1,48 @@
-<%= form_for @shop do |f| %>
-  <%= render 'shared/error_messages' %>
-  <%= f.label :japanese_name %>
-  <%= f.text_field :japanese_name %>
+<%= form_for(shop, html: { class: 'ui form' }) do |f| %>
+	<%= render partial: 'shared/error_messages', locals: { object: shop } %>
+	<div class="field">
+		<%= f.label :japanese_name, '店名(必須)' %>
+		<%= f.text_field :japanese_name %>
+	</div>
 
-  <%= f.label :district_name %>
-  <select name="district_id">
-    <%= District.all.each do |district| %>
-      <option value="<%= district.id %>"><%= district.japanese_name %></option>
-    <% end %>
-  </select>
+	<div class="field">
+		<%= f.label :station, '最寄り駅' %>
+		<%= f.text_field :station %>
+	</div>
 
-  <%#= select_tag :district_id, options_for_select(@district_options) %>
+	<%= f.collection_check_boxes(:facility_ids, Facility.all, :id, :name) do |b| %>
+		<div class="field">
+			<div class="ui checkbox">
+				<%= b.check_box %>
+				<%= b.label %>
+			</div>
+		</div>
+	<% end %>
 
-  <%#= select(:shop, :district_id, @district_options) %>
+	<div class="field">
+		<%= f.select('district_id', options_for_select(districts, shop.district_id)) %>
+	</div>
 
-  <%= f.submit yield(:button_text), class: '' %>
+	<div class="field">
+		<%= f.label :description, '紹介文' %>
+		<%= f.text_area :description %>
+	</div>
+
+	<% if current_user.admin? %>
+		<div class="field">
+			<div class="ui checkbox">
+				<%= f.check_box :registration_approved, id: "shop_#{shop.id}_registration_checkbox"  %>
+				<%= f.label :registration_approved %>
+			</div>
+		</div>
+	<% end %>
+
+	<%= f.submit yield(:shop_button_text), class: 'ui basic green fluid button', id: "shop_#{shop.id}_submit_button" %>
 
 <% end %>
+
+<style>
+.ui.form {
+	text-align: left;
+}
+</style>
