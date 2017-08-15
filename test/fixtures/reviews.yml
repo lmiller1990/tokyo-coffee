@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 review_one:
-  comment: This place is great!
+  comment: this place isnt very good 
   user: regular_user 
-  shop: shop_one
+  shop: shop_without_coffee

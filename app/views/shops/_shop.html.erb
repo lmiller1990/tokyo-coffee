@@ -7,7 +7,7 @@
 		<% end %>
 	</div>
 	<div class="content">
-		<a class="header" href="<%= shop %>"><%= shop.japanese_name %></a>
+		<a class="header shop name" href="<%= shop_path(shop) %>"><%= shop.japanese_name %></a>
 		<div class="meta">
 			<span class="description">
 				<%= shop.district.japanese_name %>

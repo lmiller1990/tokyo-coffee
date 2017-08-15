@@ -2,7 +2,7 @@ require "test_helper"
 
 class FacilityTest < ActiveSupport::TestCase
 	def setup 
-		@shop = shops(:shop_one)
+		@shop = shops(:shop_without_coffee)
 		@facility = Facility.create(name: 'Wifi')
 		@facility.shops << @shop
 	end

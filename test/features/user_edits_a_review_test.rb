@@ -2,7 +2,7 @@ require "test_helper"
 
 class UserEditsAReviewTest < Capybara::Rails::TestCase
 	def setup
-		@shop = shops(:shop_one)
+		@shop = shops(:shop_without_coffee)
 		@user = users(:regular_user)
 		@review = reviews(:review_one)
 		@another_user = users(:another_user)

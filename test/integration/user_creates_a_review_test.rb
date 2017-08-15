@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserCreatesAReviewTest < ActionDispatch::IntegrationTest
 	def setup
-    @shop = shops(:shop_one)
+    @shop = shops(:shop_without_coffee)
     @district = districts(:district_one)
     @password = "password"
     @user = User.create(email: "#{rand(4000)}@example.com", 

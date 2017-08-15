@@ -16,4 +16,10 @@ class StaticPagesController < ApplicationController
 	def area_search
 		@districts = District.all
 	end
+
+	def work_search
+		@shop_filter = ShopFilter.new
+		@facilities = Facility.all
+		@facilities_collection = Facility.all.collect { |d| [ d.name, d.id ] }
+	end
 end

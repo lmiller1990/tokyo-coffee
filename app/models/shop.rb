@@ -12,4 +12,11 @@ class Shop < ApplicationRecord
 	scope :unapproved, -> { where(registration_approved: false) }
 	scope :approved, -> { where(registration_approved: true) }
 	scope :in_area, ->(district_id = nil) { where(district_id: district_id) }
+
+	def self.with_facilities(facility)
+		puts Shop
+		puts facility
+		puts self.inspect
+		facilities
+	end
 end

@@ -5,6 +5,8 @@ class ShopsController < ApplicationController
   before_action :admin_user, only: [:destroy]
 
   def index
+	  facilties_to_filter_by = params[:facility_ids] ||= nil
+
 		district_id = params[:area]	
 		if district_id.nil?
 			@shops = Shop.approved

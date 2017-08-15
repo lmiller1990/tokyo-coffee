@@ -1,0 +1,13 @@
+<%= form_tag shops_path, class: 'ui form', method: :get do %>
+
+	<% @facilities.each do |fac| %>
+		<div class="field">
+			<div class="ui checkbox">
+				<%= check_box_tag 'facility_ids[]', fac.id, false, id: "facility_id_#{fac.id}" %>
+				<%= label_tag "facility_id_#{fac.id}", fac.name %>
+			</div>
+		</div>
+	<% end %>
+
+	<%= submit_tag "検索", class: 'ui basic green button' %>
+<% end %>

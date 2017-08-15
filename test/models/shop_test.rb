@@ -33,6 +33,7 @@ class ShopTest < ActiveSupport::TestCase
   end
 
 	test 'shop can have one or more facilities' do
+		@shop.facilities.delete_all
 		@shop.facilities << @wifi	
 		@shop.facilities << @coffee	
 
@@ -57,5 +58,10 @@ class ShopTest < ActiveSupport::TestCase
 	test 'shop in_area scope returns shops by area' do
 		shops_in_district_one = Shop.all.in_area(@district_one.id)
 		assert_equal shops_in_district_one.count, 3
+	end
+
+	test 'shop with_facilities scope returns shops with relevant facitilies' do
+		shops_without_coffee = Shop.all.with_facilities(@coffee)
+		assert_equal shops_without_coffee.count, 1
 	end
 end

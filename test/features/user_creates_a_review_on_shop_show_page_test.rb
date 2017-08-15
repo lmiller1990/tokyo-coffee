@@ -2,7 +2,7 @@ require "test_helper"
 
 class UserCreatesAReviewOnShopShopPageTest < Capybara::Rails::TestCase
 	def setup
-		@shop = shops(:shop_one)
+		@shop = shops(:shop_without_coffee)
 		@password = "password"
 		@confirmed_user = User.create(email: "#{rand(4000)}@example.com",
 																	password: @password,
